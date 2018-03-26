@@ -32,7 +32,7 @@ public class SiteController {
 				reqMap.get("site_address").toString(),
 				Double.parseDouble(reqMap.get("site_ticket").toString()),
 				reqMap.get("site_time").toString(),
-				reqMap.get("type").toString());
+				reqMap.get("site_type").toString());
 		Site newsite = siteService.addSite(site);
 		
 		if (newsite!=null) {
@@ -74,7 +74,7 @@ public class SiteController {
 	
 	@RequestMapping(path= {"/update"})
 	public String updateSite(@RequestBody Map<String, Object> reqMap) {
-		Site site = new Site(reqMap.get("sitename").toString(), 
+		Site site = new Site(reqMap.get("site_name").toString(), 
 				reqMap.get("site_address").toString(), 
 				Double.parseDouble(reqMap.get("site_ticket").toString()), 
 				reqMap.get("site_time").toString(), 
