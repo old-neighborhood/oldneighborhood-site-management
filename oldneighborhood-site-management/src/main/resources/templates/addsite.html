@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>在线考试系统 - 发布考试</title>
+<!-- Bootstrap core CSS-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Custom fonts for this template-->
+<link href="vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet" />
+<link href="css/toastr.css" rel="stylesheet" />
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<div style="display: none" id="courseID" th:text="${courseId}"></div>
+	<div style="display: none" id="courseName" th:text="${courseName}"></div>
+	<div style="display: none" id="email" th:text="${email}"></div>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+		<a class="navbar-brand" href="/teacher">Annoying Test</a>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Course"><a class="nav-link" href="/course"> <i
+						class="fa fa-fw fa-book"></i> <span class="nav-link-text">Course</span>
+				</a></li>
+
+				<!-- Navigation - Course -->
+
+
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"></i>Logout
+				</a></li>
+
+				<!-- Logout -->
+			</ul>
+		</div>
+	</nav>
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active"><a id="teacher"
+					href="/course">Course</a></li>
+				<li class="breadcrumb-item active">新建景点</li>
+			</ol>
+
+
+
+			<!-- Example DataTables Card-->
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-pencil"></i> 发布考试
+				</div>
+
+				<div class="card-body">
+					<div class="table-responsive">
+
+						<form role="form">
+							<div id="course" class="form-group">
+								<label style='color: blue'>课程：------</label>
+							</div>
+							<hr>
+
+
+							<div class="form-group">
+								<label for="site_name">名称：</label> <input type="text"
+									class="form-control w-50" id="site_name" placeholder="北大楼">
+							</div>
+
+							<div class="form-group">
+								<label for="site_address">地址：</label> <input type="text"
+									class="form-control w-50" id="site_address" placeholder="汉口路22号" />
+							</div>
+
+							<div class="form-group">
+								<label for="site_type">类型（景区/停车场/卫生间）：</label> <input type="text"
+									class="form-control w-50" id="site_type" />
+							</div>
+							
+							<div class="form-group">
+								<label for="site_ticket">门票费用(元)：</label> <input type="text"
+									class="form-control w-50" id="site_ticket" placeholder="20.00" />
+							</div>
+							
+							<div class="form-group">
+								<label for="site_ticket">开放时间：</label> <input type="text"
+									class="form-control w-50" id="site_ticket" placeholder="周一~周五：10:00-17:00\n周末：10:00-18:00" />
+							</div>
+
+							<!-- <div class="form-group">
+								<label for="students">考生名单导入——</label><br> <input
+									class="btn btn-default" style="font-size: 15px" type="file"
+									id="studentlist" name="studentlist">
+								<button id="uploadlist" class="btn btn-default"
+									style="font-size: 15px" type="button">上传名单</button>
+								<button type="button" class="btn btn-default"
+									style="font-size: 15px"
+									onclick="window.open('../file/model_info.xlsx')">下载名单模板</button>
+							</div> -->
+							
+							<!-- <hr />
+							<div id="import" class="form-group">
+								<label>选择试题</label><br /> <label>单选：</label> <input type="text"
+									id="singlenum" placeholder="题数"> X <input type="text"
+									id="singlepoint" placeholder="分值"> <br /> <label>多选：</label>
+								<input type="text" id="doublenum" placeholder="题数"> X <input
+									type="text" id="doublepoint" placeholder="分值">
+								<button id="getScore" type="button">总分</button>
+								<label id="score"></label>
+							</div>
+							<hr /> -->
+
+							<!-- 插件实现时间选择效果 -->
+
+							<!--               <script type="text/javascript">
+                $(".form_datetime").datetimepicker({format: "yyyy-mm-dd hh:ii"});
+              </script>
+
+              <div class="form-group">
+                <input type="text" value="2017-12-17 12:00" readonly class="form_datetime">
+              </div> -->
+
+							<button id="release" type="button" class="btn btn-default">发布</button>
+						</form>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container-fluid-->
+		<!-- /.content-wrapper-->
+		<footer class="sticky-footer">
+			<div class="container">
+				<div class="text-center">
+					<small>Copyright © Annoying Test 2017</small>
+				</div>
+			</div>
+		</footer>
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fa fa-angle-up"></i>
+		</a>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">确认退出？</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">取消</button>
+						<a class="btn btn-primary" href="/logout">登出</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Bootstrap core JavaScript-->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="js/toastr.min.js"></script>
+		<script src="js/sb-admin.min.js"></script>
+		<script src="js/release.js"></script>
+	</div>
+</body>
+
+</html>

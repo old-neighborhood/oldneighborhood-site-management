@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -27,7 +29,8 @@ public class Site implements Serializable{
 	
 	private static final long serialVersionUID = 2331222388069345367L;
 	@Id
-	private String site_ID;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer site_ID;
 	@NonNull
 	private String site_name;
 	@NonNull

@@ -42,7 +42,7 @@ public class SiteServiceImpl implements SiteService{
 	}
 
 	@Override
-	public Site find(String siteID) {
+	public Site find(Integer siteID) {
 		Site site = null;
 		try {
 			site = siteDao.findOne(siteID);
@@ -92,7 +92,7 @@ public class SiteServiceImpl implements SiteService{
 	}
 
 	@Override
-	public boolean closeSite(String siteID) {
+	public boolean closeSite(Integer siteID) {
 		boolean flag = false;
 		try {
 			siteDao.closeSite(siteID);
@@ -105,7 +105,7 @@ public class SiteServiceImpl implements SiteService{
 	
 	//关闭某景点，site_state设置为CLOSED
 	@Override
-	public boolean deleteSite(String siteID) {
+	public boolean deleteSite(Integer siteID) {
 		boolean flag = false;
 		try {
 			Site site = this.find(siteID);
@@ -118,7 +118,7 @@ public class SiteServiceImpl implements SiteService{
 	}
 	//该变景点类型 site/pub 景点/卫生间/停车场...
 	@Override
-	public boolean changeType(String site_ID, String site_type) {
+	public boolean changeType(Integer site_ID, String site_type) {
 		boolean flag = false;
 		try {
 			siteDao.changeType(site_type, site_ID);

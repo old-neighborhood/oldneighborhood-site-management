@@ -11,7 +11,7 @@ public interface SiteService {
 	public List<Site> listSite();
 	
 	//查找findByID
-	public Site find(String siteID);
+	public Site find(Integer siteID);
 	//模糊查找findByName
 	public List<String> findByNameLike(String sitename);
 	//精确查找
@@ -19,10 +19,10 @@ public interface SiteService {
 	//更新信息
 	public boolean updateSite(Site site);
 	//设置景点关闭
-	public boolean closeSite(String siteID);
+	public boolean closeSite(Integer siteID);
 	//改变景点类型
-	public boolean changeType(String siteID, String site_type);
+	public boolean changeType(Integer siteID, String site_type);
 	//删除景点
-	public boolean deleteSite(String siteID);
+	public boolean deleteSite(Integer siteID);
 
 }

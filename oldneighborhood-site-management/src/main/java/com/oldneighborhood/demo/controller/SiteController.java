@@ -104,20 +104,21 @@ public class SiteController {
 	
 	@RequestMapping(path= {"/close"})
 	public String closeSite(@RequestBody Map<String, Object> reqMap) {
-		boolean flag = siteService.closeSite(reqMap.get("site_ID").toString());
+		boolean flag = siteService.closeSite(Integer.parseInt(reqMap.get("site_ID").toString()));
 		return flag ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
 	}
 	
 	@RequestMapping(path= {"/change"})
 	public String changeSite(@RequestBody Map<String, Object> reqMap) {
 		boolean flag = siteService.changeType(
-				reqMap.get("site_ID").toString(), reqMap.get("new_site_type").toString());
+				Integer.parseInt(reqMap.get("site_ID").toString()), 
+				reqMap.get("new_site_type").toString());
 		return flag ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
 	}
 	
 	@RequestMapping(path= {"/delete"})
 	public String deleteSite(@RequestBody Map<String, Object> reqMap) {
-		boolean flag = siteService.deleteSite(reqMap.get("site_ID").toString());
+		boolean flag = siteService.deleteSite(Integer.parseInt(reqMap.get("site_ID").toString()));
 		return flag ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
 	}
 

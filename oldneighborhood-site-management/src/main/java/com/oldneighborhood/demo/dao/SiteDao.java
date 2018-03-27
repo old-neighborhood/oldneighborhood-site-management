@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.oldneighborhood.demo.entity.Site;
 
-public interface SiteDao extends JpaRepository<Site, String>{
+public interface SiteDao extends JpaRepository<Site, Integer>{
 	
 	@Query(value = "select site_name from site where site_name like ? ", nativeQuery = true)
 	public List<String> findByNameLike(String name);
@@ -26,13 +26,13 @@ public interface SiteDao extends JpaRepository<Site, String>{
 	public void updateSiteInfo(String site_name, String site_address, 
 			String site_image, String site_intro, String site_tele, 
 			String site_wed, String site_email, Double site_ticket, 
-			String site_time, String site_ID);
+			String site_time, Integer site_ID);
 	
 	@Modifying
 	@Query(value="update site set site_state = 'CLOSED' where site_ID = ? ", nativeQuery = true)
-	public void closeSite(String site_ID);
+	public void closeSite(Integer site_ID);
 	
 	@Modifying
 	@Query(value="update site set site_type = ? where site_ID = ? ", nativeQuery = true)
-	public void changeType(String site_type, String site_ID);
+	public void changeType(String site_type, Integer site_ID);
 }

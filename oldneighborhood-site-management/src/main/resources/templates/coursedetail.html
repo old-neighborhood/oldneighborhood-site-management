@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>在线考试系统 - 课程信息</title>
+<!-- Bootstrap core CSS-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Custom fonts for this template-->
+<link href="vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet" />
+<link href="css/toastr.css" rel="stylesheet" />
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+
+	<div style="display: none" id="courseID" th:text="${courseId}"></div>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+		<a class="navbar-brand" href="/teacher">Annoying Test</a>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Course"><a class="nav-link" href="/course"> <i
+						class="fa fa-fw fa-book"></i> <span class="nav-link-text">Course</span>
+				</a></li>
+
+				<!-- Navigation - Course -->
+
+
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"></i>Logout
+				</a></li>
+
+				<!-- Logout -->
+			</ul>
+		</div>
+	</nav>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" id="teacher"><a
+					href="/course">Course</a></li>
+				<li class="breadcrumb-item active" id="course"></li>
+			</ol>
+
+
+			<div class="card mb-3">
+
+				<div class="card-body">
+					<h6 class="card-title mb-1" id="coursename" style="color: black">计算机操作系统</h6>
+					<hr />
+					<p class="card-text small" id="courseintro">简介：本课程面向本科年级计算机、软件相关专业的学生，需要具备一些计算机组织结构的基础知识。对于深入了解计算机底层结构机制以及尝试进行系统相关编程的学生.......
+					</p>
+					<hr />
+					<p class="card-text small" id="examlib">
+						题库导入: <label for="inputfile"></label> <input type="file"
+							id="inputlib" name="inputlib">
+						<button id="uploadfile" class="btn btn-default"
+							style="font-size: 15px" type="botton">上传文件</button>
+						<button type="button" class="btn btn-default"
+							style="font-size: 15px"
+							onclick="window.open('http://47.100.35.185:8085/template')">下载试题模板</button>
+					</p>
+
+				</div>
+				<hr class="my-0" />
+
+				<div class="card-body">
+					<p class="card-text small" id="newexam"></p>
+				</div>
+				<hr class="my-0">
+
+				<div class="card-body" id="examinfo">
+					<!-- <div> 
+              	<a href="/result" class="btn btn-default" type="button">操作系统考试Ⅰ</a>
+              	<br/>
+              	<span class="card-text small">2017-12-12 / 8:00~10:00</span>
+              	<hr />
+
+              	<div class="card-body py-2 small">
+                <a class="mr-3 d-inline-block" href="#">
+                  <i class="fa fa-fw fa-download"></i>导出空白试题</a>
+                <a class="mr-3 d-inline-block" href="#">
+                  <i class="fa fa-fw fa-cloud-download"></i>导出完整试题</a>
+                <a class="d-inline-block" href="#">
+                  <i class="fa fa-fw fa-bar-chart"></i>查看测试结果</a>
+               </div>
+
+              </div>
+
+			  
+              <div> 
+              	<a href="/result" class="btn btn-default" type="button">操作系统考试Ⅱ</a>
+              	<br/>
+                <span class="card-text small">2017-12-13 / 8:00~10:00</span>
+              </div> -->
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+		<!-- /.container-fluid-->
+		<!-- /.content-wrapper-->
+		<footer class="sticky-footer">
+			<div class="container">
+				<div class="text-center">
+					<small>Copyright © Annoying Test 2017</small>
+				</div>
+			</div>
+		</footer>
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fa fa-angle-up"></i>
+		</a>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">确认退出？</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">取消</button>
+						<a class="btn btn-primary" href="/logout">登出</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Bootstrap core JavaScript-->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="js/toastr.min.js"></script>
+		<script src="js/sb-admin.min.js"></script>
+		<script src="js/coursedetail.js"></script>
+	</div>
+</body>
+
+</html>
