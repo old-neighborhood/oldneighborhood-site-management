@@ -11,6 +11,7 @@ import com.oldneighborhood.demo.entity.Site;
 import com.oldneighborhood.demo.service.SiteService;
 
 @Service
+
 public class SiteServiceImpl implements SiteService{
 	
 	@Autowired
@@ -77,6 +78,7 @@ public class SiteServiceImpl implements SiteService{
 	
 	//更新景点信息 site_ID/site_date/ad_ID/site_state(在closeSite中改变)不可变更
 	@Override
+	@Transactional
 	public boolean updateSite(Site site) {
 		boolean flag = false;
 		try {
@@ -91,7 +93,9 @@ public class SiteServiceImpl implements SiteService{
 		return flag;
 	}
 
+	//关闭某景点，site_state设置为CLOSED
 	@Override
+	@Transactional
 	public boolean closeSite(Integer siteID) {
 		boolean flag = false;
 		try {
@@ -103,8 +107,8 @@ public class SiteServiceImpl implements SiteService{
 		return flag;
 	}
 	
-	//关闭某景点，site_state设置为CLOSED
 	@Override
+	@Transactional
 	public boolean deleteSite(Integer siteID) {
 		boolean flag = false;
 		try {
@@ -118,6 +122,7 @@ public class SiteServiceImpl implements SiteService{
 	}
 	//该变景点类型 site/pub 景点/卫生间/停车场...
 	@Override
+	@Transactional
 	public boolean changeType(Integer site_ID, String site_type) {
 		boolean flag = false;
 		try {
