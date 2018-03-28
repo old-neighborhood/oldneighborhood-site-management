@@ -54,10 +54,11 @@ public class Site implements Serializable{
 	
 	@Column(columnDefinition="timestamp not null default now()" , updatable=false)
 	private Timestamp site_date;
-
-	public Site(String site_name, String site_address, Double site_ticket, String site_time, String site_image,
+	//new
+	public Site(Integer site_ID, String site_name, String site_address, Double site_ticket, String site_time, String site_image,
 			String site_intro, String site_tele, String site_web, String site_email) {
 		super();
+		this.site_ID = site_ID;
 		this.site_name = site_name;
 		this.site_address = site_address;
 		this.site_ticket = site_ticket;
