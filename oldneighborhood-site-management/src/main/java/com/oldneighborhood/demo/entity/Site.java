@@ -45,6 +45,7 @@ public class Site implements Serializable{
 	private String site_web;
 	private String site_email;
 	//外键管理员ID
+	@NonNull
 	private String ad_ID;
 	//OPEN/CLOSED
 	private String state;

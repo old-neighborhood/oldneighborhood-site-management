@@ -12,9 +12,7 @@ import com.alibaba.druid.support.http.WebStatFilter;
 					@WebInitParam(name="exclusions" , value="*.js,*.jpg,*.png,*.gif,*.ico,*.css,/druid/*") //配置本过滤器放行的请求后缀
 			}
 		)
-public class DruidStatFilter extends 
-WebStatFilter
-//StatViewFilter 
-{
+//StatViewFilter
+public class DruidStatFilter extends WebStatFilter{
 
 }

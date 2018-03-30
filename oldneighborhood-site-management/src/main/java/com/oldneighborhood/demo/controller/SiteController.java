@@ -12,6 +12,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oldneighborhood.demo.entity.Site;
@@ -25,20 +26,23 @@ public class SiteController {
 	@Autowired
 	private SiteService siteService;
 	
-	@RequestMapping(path= {"/add"})
+	@RequestMapping(path= {"/add"},method= {RequestMethod.POST})
 	public String addSite(@RequestBody Map<String, Object> reqMap) {
+		System.out.println("addController>>>>>>>>>>>");
+		System.out.println(reqMap);
 		Site site = new Site(
 				reqMap.get("site_name").toString(), 
 				reqMap.get("site_address").toString(),
 				Double.parseDouble(reqMap.get("site_ticket").toString()),
 				reqMap.get("site_time").toString(),
+				reqMap.get("ad_ID").toString(),
 				reqMap.get("site_type").toString());
 		Site newsite = siteService.addSite(site);
 		
 		if (newsite!=null) {
-			return "\"result\":\"success\"";
+			return "{\"result\":\"success\"}";
 		}else {
-			return "\"result\":\"error\"";
+			return "{\"result\":\"error\"}";
 		}
 	}
 	//返回景点列表
@@ -85,7 +89,7 @@ public class SiteController {
 				reqMap.get("site_tele").toString(), 
 				reqMap.get("site_web").toString(), 
 				reqMap.get("site_email").toString());
-		return siteService.updateSite(site) ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
+		return siteService.updateSite(site) ? "{\"result\":\"success\"}" : "{\"result\":\"error\"}" ;
 	}
 	
 	@RequestMapping(path= {"/find"})
@@ -107,7 +111,7 @@ public class SiteController {
 	@RequestMapping(path= {"/close"})
 	public String closeSite(@RequestBody Map<String, Object> reqMap) {
 		boolean flag = siteService.closeSite(Integer.parseInt(reqMap.get("site_ID").toString()));
-		return flag ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
+		return flag ? "{\"result\":\"success\"}" : "{\"result\":\"error\"}" ;
 	}
 	
 	@RequestMapping(path= {"/change"})
@@ -115,13 +119,13 @@ public class SiteController {
 		boolean flag = siteService.changeType(
 				Integer.parseInt(reqMap.get("site_ID").toString()), 
 				reqMap.get("new_site_type").toString());
-		return flag ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
+		return flag ? "{\"result\":\"success\"}" : "{\"result\":\"error\"}" ;
 	}
 	
 	@RequestMapping(path= {"/delete"})
 	public String deleteSite(@RequestBody Map<String, Object> reqMap) {
 		boolean flag = siteService.deleteSite(Integer.parseInt(reqMap.get("site_ID").toString()));
-		return flag ? "\"result\":\"success\"" : "\"result\":\"error\"" ;
+		return flag ? "{\"result\":\"success\"}" : "{\"result\":\"error\"}" ;
 	}
 
 }

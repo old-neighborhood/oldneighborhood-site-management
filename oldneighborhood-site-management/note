@@ -1,0 +1,9 @@
+1.使用Getman - 
+	--post/get
+	--requestbody {"key":"value"}
+2.Transaction marked as rollbackOnly->
+3.Cannot add or update a child row: a foreign key constraint fails
+	--外键问题
+4.Junit Test 依然 java.lang.AssertionError: Status expected:<200> but was:<404>
+
+5.desc [table]; alter [table] modify [column] {int not null auto_increment}
