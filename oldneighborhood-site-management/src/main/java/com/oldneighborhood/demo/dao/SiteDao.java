@@ -10,8 +10,8 @@ import com.oldneighborhood.demo.entity.Site;
 
 public interface SiteDao extends JpaRepository<Site, Integer>{
 	
-	@Query(value = "select site_name from site where site_name like ? ", nativeQuery = true)
-	public List<String> findByNameLike(String name);
+	@Query(value = "select * from site where site_name like ? ", nativeQuery = true)
+	public List<Site> findByNameLike(String name);
 	
 	@Query(value = "select * from site where site_name = ? ", nativeQuery = true)
 	public Site findByName(String sitename);

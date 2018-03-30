@@ -92,19 +92,28 @@ public class SiteController {
 		return siteService.updateSite(site) ? "{\"result\":\"success\"}" : "{\"result\":\"error\"}" ;
 	}
 	
-	@RequestMapping(path= {"/find"})
-	public String findSite(@RequestBody Map<String, Object> reqMap) {
-		Site site = siteService.findByName(reqMap.get("sitename").toString());
+	@RequestMapping(path= {"/findID"})
+	public String findSiteByID(@RequestBody Map<String, Object> reqMap) {
+		Site site = siteService.find(
+				Integer.parseInt(reqMap.get("site_ID").toString()));
 		JSONObject json = JSONObject.fromObject(site);
 		System.out.println(json);
 		return json.toString();
 	}
 	
+//	@RequestMapping(path= {"/find"})
+//	public String findSite(@RequestBody Map<String, Object> reqMap) {
+//		Site site = siteService.findByName(reqMap.get("site_name").toString());
+//		JSONObject json = JSONObject.fromObject(site);
+//		System.out.println(json);
+//		return json.toString();
+//	}
+	
 	@RequestMapping(path= {"/search"})
 	public String searchSite(@RequestBody Map<String, Object> reqMap) {
-		List<String> sitenames = siteService.findByNameLike(reqMap.get("sitename").toString());
-		JSONObject json = JSONObject.fromObject(sitenames);
-		System.out.println(json);
+		List<Site> sitenames = siteService.findByNameLike(reqMap.get("sitename").toString());
+		JSONArray json = JSONArray.fromObject(sitenames);
+//		System.out.println(json);
 		return json.toString();
 	}
 	
@@ -118,7 +127,7 @@ public class SiteController {
 	public String changeSite(@RequestBody Map<String, Object> reqMap) {
 		boolean flag = siteService.changeType(
 				Integer.parseInt(reqMap.get("site_ID").toString()), 
-				reqMap.get("new_site_type").toString());
+				reqMap.get("site_type").toString());
 		return flag ? "{\"result\":\"success\"}" : "{\"result\":\"error\"}" ;
 	}
 	

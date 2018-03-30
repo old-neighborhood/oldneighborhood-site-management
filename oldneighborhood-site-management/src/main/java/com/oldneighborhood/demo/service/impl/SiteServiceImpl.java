@@ -11,7 +11,6 @@ import com.oldneighborhood.demo.entity.Site;
 import com.oldneighborhood.demo.service.SiteService;
 
 @Service
-
 public class SiteServiceImpl implements SiteService{
 	
 	@Autowired
@@ -21,6 +20,7 @@ public class SiteServiceImpl implements SiteService{
 	@Transactional
 	public Site addSite(Site site) {
 		Site newsite = null;
+//		site.setSite_image("");
 		try {
 			newsite = siteDao.saveAndFlush(site);
 			System.out.println(newsite);
@@ -55,8 +55,8 @@ public class SiteServiceImpl implements SiteService{
 	
 	//模糊查询，仅返回名称列表
 	@Override
-	public List<String> findByNameLike(String sitename) {
-		List<String> sitelist = null;
+	public List<Site> findByNameLike(String sitename) {
+		List<Site> sitelist = null;
 		try {
 			String namelike = "%"+sitename+"%";
 			sitelist = siteDao.findByNameLike(namelike);
@@ -66,15 +66,17 @@ public class SiteServiceImpl implements SiteService{
 		return sitelist;
 	}
 	//按照景点名称精确查找
-	public Site findByName(String sitename) {
-		Site site = null;
-		try {
-			site = siteDao.findByName(sitename);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return site;
-	}
+//	public Site findByName(String sitename) {
+//		Site site = null;
+//		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<to find");
+//		try {
+//			site = siteDao.findByName(sitename);
+//			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<success find!");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return site;
+//	}
 	
 	//更新景点信息 site_ID/site_date/ad_ID/site_state(在closeSite中改变)不可变更
 	@Override

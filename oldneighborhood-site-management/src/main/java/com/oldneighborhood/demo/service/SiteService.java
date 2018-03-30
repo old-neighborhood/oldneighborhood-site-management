@@ -13,9 +13,9 @@ public interface SiteService {
 	//查找findByID
 	public Site find(Integer siteID);
 	//模糊查找findByName
-	public List<String> findByNameLike(String sitename);
+	public List<Site> findByNameLike(String sitename);
 	//精确查找
-	public Site findByName(String sitename);
+//	public Site findByName(String sitename);
 	//更新信息
 	public boolean updateSite(Site site);
 	//设置景点关闭

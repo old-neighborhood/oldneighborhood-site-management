@@ -39,6 +39,7 @@ public class Site implements Serializable{
 	private Double site_ticket;
 	@NonNull
 	private String site_time;
+	@Column(columnDefinition="varchar(255) DEFAULT '/image/site.jpg'")
 	private String site_image;
 	private String site_intro;
 	private String site_tele;
@@ -48,7 +49,8 @@ public class Site implements Serializable{
 	@NonNull
 	private String ad_ID;
 	//OPEN/CLOSED
-	private String state;
+	@Column(columnDefinition="varchar(10) default 'OPEN'")
+	private String site_state;
 	//site/pub
 	@NonNull
 	private String site_type;
