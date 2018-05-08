@@ -2,6 +2,7 @@ package com.oldneighborhood.demo.service;
 
 import java.util.List;
 
+import com.oldneighborhood.demo.entity.Page;
 import com.oldneighborhood.demo.entity.Site;
 
 public interface SiteService {
@@ -9,6 +10,9 @@ public interface SiteService {
 	public Site addSite(Site site);
 	//返回所有景点
 	public List<Site> listSite();
+	//按照页查找
+	public int listcount();
+	public List<Site> list(Page page);
 	
 	//查找findByID
 	public Site find(Integer siteID);

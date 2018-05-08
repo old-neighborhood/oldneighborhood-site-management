@@ -16,15 +16,69 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>游客用户注册</td>
-				<td>/oldneighborhood/site/list</td>
-				<td>{"username":username, "password":password, "tele":tele}</td>
+				<td>景点列表分页</td>
+				<td>/site/list</td>
+				<td>{"current_page":1, "page_size":20}</td>
+				<td>[siteobj1][siteobj2]...</td>
+			</tr>
+			<tr>
+				<td>景点全部列表</td>
+				<td>/list/listall</td>
+				<td></td>
+				<td>[siteobj1][siteobj2]...</td>
+			</tr>
+			<tr>
+				<td>模糊搜索景点</td>
+				<td>/site/search</td>
+				<td>{"sitename":""}</td>
+				<td>[siteobj1][siteobj2]...</td>
+			</tr>
+			<tr>
+				<td>名称搜索景点(可能出错,景点重名)</td>
+				<td>/site/find</td>
+				<td>{"sitename":""}</td>
+				<td>{siteobj}</td>
+			</tr>
+			<tr>
+				<td>ID搜索景点(ID - Integer)</td>
+				<td>/site/findID</td>
+				<td>{"site_ID":}</td>
+				<td>{siteobj}</td>
+			</tr>
+			<tr>
+				<td>添加景点</td>
+				<td>/site/add</td>
+				<td>{"site_name":"","site_time":"","site_address":"","site_type":"","site_ticket": ,"ad_ID":""}</td>
 				<td>{"result":"success"/"error"}</td>
 			</tr>
 			<tr>
-				<td>商业用户注册</td>
-				<td>/oldneighborhood/salersignup</td>
-				<td>{"username":username, "password":password, "tele":tele}</td>
+				<td>景点图片上传</td>
+				<td>/site/image</td>
+				<td></td>
+				<td>{"result":"success"/"error"}</td>
+			</tr>
+			<tr>
+				<td>更新景点</td>
+				<td>/site/update</td>
+				<td>{"site_ID":,"site_name":"","site_address":"","site_ticket":,"site_time":"","site_image":"","site_intro":"","site_tele":"","site_web":"","site_email":""}</td>
+				<td>{"result":"success"/"error"}</td>
+			</tr>
+			<tr>
+				<td>删除景点</td>
+				<td>/site/delete</td>
+				<td>{"site_ID":}</td>
+				<td>{"result":"success"/"error"}</td>
+			</tr>
+			<tr>
+				<td>关闭景点</td>
+				<td>/site/close</td>
+				<td>{"site_ID":}</td>
+				<td>{"result":"success"/"error"}</td>
+			</tr>
+			<tr>
+				<td>更改景点类型</td>
+				<td>/site/change</td>
+				<td>{"site_ID":,"site_type":""}</td>
 				<td>{"result":"success"/"error"}</td>
 			</tr>
 		</tbody>

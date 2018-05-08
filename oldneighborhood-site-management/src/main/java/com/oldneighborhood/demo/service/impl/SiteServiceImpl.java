@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.oldneighborhood.demo.dao.SiteDao;
+import com.oldneighborhood.demo.entity.Page;
 import com.oldneighborhood.demo.entity.Site;
 import com.oldneighborhood.demo.service.SiteService;
 
@@ -28,6 +29,19 @@ public class SiteServiceImpl implements SiteService{
 			e.printStackTrace();
 		}
 		return newsite;
+	}
+	
+	@Override
+	public int listcount() {
+		return (int)siteDao.count();
+	}
+	
+	@Override
+	public List<Site> list(Page page) {
+		int offset_row = page.getOffset_row();
+		int page_size = page.getPage_size();
+		List<Site> list = siteDao.listByPage(offset_row, page_size);
+		return list;
 	}
 	
 	//list all sites here

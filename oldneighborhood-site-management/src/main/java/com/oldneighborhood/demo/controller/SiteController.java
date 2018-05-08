@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oldneighborhood.demo.entity.Page;
 import com.oldneighborhood.demo.entity.Site;
 import com.oldneighborhood.demo.service.SiteService;
 
 
 @RestController
-@RequestMapping(path= {"/site"})
+//@RequestMapping(path= {"/site"})
 public class SiteController {
 	
 	@Autowired
@@ -45,35 +46,26 @@ public class SiteController {
 			return "{\"result\":\"error\"}";
 		}
 	}
-	//返回景点列表
-	@RequestMapping(path= {"/list"})
+	
+	@RequestMapping("/list")
+	public String list(@RequestBody Map<String, Object> reqMap) {
+		int total_rows = siteService.listcount();
+		int current_pages = Integer.parseInt(reqMap.get("current_page").toString());
+		int page_size = Integer.parseInt(reqMap.get("page_size").toString());
+		Page page = new Page(total_rows, current_pages, page_size);
+		List<Site> sitelist = siteService.list(page);
+		JSONArray json = JSONArray.fromObject(sitelist);
+		return json.toString();
+	}
+	
+	//返回景点列表-全部
+	@RequestMapping(path= {"/listall"})
 	public String listSite() {
 		List<Site> sitelist = null;
 		sitelist = siteService.listSite();
 		JSONArray json = JSONArray.fromObject(sitelist);
 		System.out.println(json);
 		return json.toString();
-//		for (Site site : sitelist) {
-//			JSONObject jo = new JSONObject();
-//			try {
-//				jo.put("site_ID", site.getSite_ID());
-//				jo.put("site_name", site.getSite_name());
-//				jo.put("site_address", site.getSite_address());
-//				jo.put("site_image", site.getSite_image());
-//				jo.put("site_intro", site.getSite_intro());
-//				jo.put("site_tele", site.getSite_tele());
-//				jo.put("site_web", site.getSite_web());
-//				jo.put("site_email", site.getSite_email());
-//				jo.put("site_ticket", site.getSite_ticket());
-//				jo.put("site_time", site.getSite_time());
-//				
-//				jo.put("site_state", site.getState());
-//				jo.put("site_type", site.getSite_type());
-//				json.put(jo);
-//			} catch (JSONException e) {
-//				e.printStackTrace();
-//			}
-//		}
 	}
 	
 	@RequestMapping(path= {"/update"})

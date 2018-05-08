@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class DefaultController {
-	@RequestMapping(path= {"/site"})
+	@RequestMapping(path= {"/info"})
 	public String siteManage() {
-		return "/site";
+		return "/info";
 	}
 
 }
